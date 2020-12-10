@@ -5,29 +5,29 @@ function quicksort(a) {
   if(a.length === 0) {
     return;
   }
-  function sort(a, start, end) {
-    if(start === end) {
+  function sort(a, begin, end) {
+    if(begin === end) {
       return;
     }
-    let startIndex = start, endIndex = end, temp;
+    let beginIndex = begin, endIndex = end, temp;
     while(true) {
-      while(a[endIndex] > a[start] && endIndex > startIndex) endIndex--;
-      while(a[startIndex] <= a[start] && startIndex < endIndex) startIndex++;
-      if(endIndex === startIndex) {
+      while(a[endIndex] > a[begin] && endIndex > beginIndex) endIndex--;
+      while(a[beginIndex] <= a[begin] && beginIndex < endIndex) beginIndex++;
+      if(endIndex === beginIndex) {
         break;
       } else {
-        temp = a[startIndex];
-        a[startIndex] = a[endIndex];
+        temp = a[beginIndex];
+        a[beginIndex] = a[endIndex];
         a[endIndex] = temp;
       }
     }
-    if(endIndex === start) {
-      sort(a, start + 1, end);
+    if(endIndex === begin) {
+      sort(a, begin + 1, end);
     } else {
-      temp = a[start];
-      a[start] = a[endIndex];
+      temp = a[begin];
+      a[begin] = a[endIndex];
       a[endIndex] = temp;
-      sort(a, start, endIndex - 1);
+      sort(a, begin, endIndex - 1);
       if(endIndex !== end) {
         sort(a, endIndex + 1, end);
       }
